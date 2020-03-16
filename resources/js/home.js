@@ -11,6 +11,7 @@ import Vuetify from 'vuetify';
 import Router from 'vue-router';
 
 import Home from './components/Home.vue'
+import Current from './components/Current.vue'
 
 Vue.use(Vuetify);
 Vue.use(Router);
@@ -36,7 +37,12 @@ const router = new Router({
         {
             path: '/',
             name: 'home',
-            component: Home
+            redirect: '/current'
+        },
+        {
+            path: '/current',
+            name: 'current',
+            component: Current
         }
     ]
 })
