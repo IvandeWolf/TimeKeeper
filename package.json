@@ -30,6 +30,8 @@
     },
     "dependencies": {
         "body-parser": "^1.19.0",
+        "browser-sync": "^2.26.7",
+        "browser-sync-webpack-plugin": "^2.2.2",
         "material-components-web": "^3.2.0",
         "material-design-icons": "^3.0.1",
         "socket.io-client": "^2.3.0",

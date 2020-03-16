@@ -1,8 +1,9 @@
 <template>
 <div class="mdc-drawer-app-content">
   <main class="main-content" id="main-content">
+    <Quote></Quote>
     <v-card
-      class="mx-auto"
+      outlined
     >
       <v-card-text>
         <div>Current task</div>
@@ -32,5 +33,9 @@ export default {
 <style>
 main {
   margin: 8px;
+}
+
+.v-card {
+  margin-bottom: 8px;
 }
 </style>

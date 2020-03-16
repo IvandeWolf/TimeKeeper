@@ -22,3 +22,5 @@ mix.js('resources/js/home.js', 'public/js')
         includePaths: [path.resolve(__dirname, 'node_modules')]
     })
     .webpackConfig(Object.assign(webpack));
+
+mix.browserSync('localhost:4000');
