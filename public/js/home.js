@@ -2820,6 +2820,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id'],
   mounted: function mounted() {
@@ -39981,6 +39982,19 @@ var render = function() {
                         }
                       },
                       [_vm._v(_vm._s(this.category.title))]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "v-chip",
+                      {
+                        attrs: {
+                          outlined: "",
+                          label: "",
+                          small: "",
+                          color: "blue darken-4"
+                        }
+                      },
+                      [_vm._v(_vm._s(Date.now()))]
                     )
                   ],
                   1
@@ -40015,7 +40029,6 @@ var render = function() {
                               ref: "dialog",
                               attrs: {
                                 "return-value": _vm.start_time,
-                                persistent: "",
                                 width: "290px"
                               },
                               on: {
@@ -40143,7 +40156,6 @@ var render = function() {
                               ref: "dialog2",
                               attrs: {
                                 "return-value": _vm.end_time,
-                                persistent: "",
                                 width: "290px"
                               },
                               on: {

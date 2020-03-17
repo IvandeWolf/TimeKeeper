@@ -3,6 +3,7 @@
     <v-card-text v-if="this.activity">
       <div v-if="this.category">
         <v-chip outlined label small color="blue darken-4">{{ this.category.title }}</v-chip>
+        <v-chip outlined label small color="blue darken-4">{{ Date.now() }}</v-chip>
       </div>
       <h2 class="display-1 text--primary">{{ this.activity.title}}</h2>
       <p>{{ this.activity.subtitle}}</p>
@@ -12,7 +13,7 @@
         <v-row>
           <!-- Start time -->
           <v-col cols="6" sm="6" md="6">
-            <v-dialog ref="dialog" v-model="modal_end" :return-value.sync="start_time" persistent width="290px">
+            <v-dialog ref="dialog" v-model="modal_end" :return-value.sync="start_time" width="290px">
               <template v-slot:activator="{ on }">
                 <v-text-field
                   outlined
@@ -34,7 +35,7 @@
 
           <!-- End time -->
           <v-col cols="6" sm="6" md="6">
-            <v-dialog ref="dialog2" v-model="modal_start" :return-value.sync="end_time" persistent width="290px">
+            <v-dialog ref="dialog2" v-model="modal_start" :return-value.sync="end_time" width="290px">
               <template v-slot:activator="{ on }">
                 <v-text-field
                   outlined
