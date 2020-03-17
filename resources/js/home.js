@@ -6,6 +6,7 @@
 
 require('./bootstrap')
 
+// import '@mdi/font/css/materialdesignicons.css'
 window.Vue = require('vue')
 import Vuetify from 'vuetify';
 import Router from 'vue-router';

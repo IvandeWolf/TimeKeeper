@@ -1,6 +1,6 @@
 <template>
   <v-card outlined>
-    <v-card-text class="headline font-weight-bold">
+    <v-card-text class="headline font-weight-bold blue--text text--darken-4">
       "{{ quote }}"
     </v-card-text>
   </v-card>
@@ -37,6 +37,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.v-card {
+  margin-bottom: 8px;
+}
 </style>

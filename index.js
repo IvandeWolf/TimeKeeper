@@ -40,6 +40,34 @@ const time = new function() {
         app.use(bodyParser.urlencoded({ extended: false }))
         app.use(bodyParser.json())
 
+        /* Get the current active activity ids. */
+        app.get('/current', (req, res) => {
+            let data_file = fs.readFileSync(__dirname + '/times.json')
+
+            res.send(JSON.parse(data_file).current)
+        })
+
+        /* Get the info about a activity. */
+        app.get('/activity', (req, res) => {
+            let data_file = fs.readFileSync(__dirname + '/times.json')
+
+            res.send(JSON.parse(data_file).activities[req.query.id])
+        })
+
+        /* Get the info about a category. */
+        app.get('/category', (req, res) => {
+            let data_file = fs.readFileSync(__dirname + '/times.json')
+
+            res.send(JSON.parse(data_file).category[req.query.id])
+        })
+
+        /* Get the info about a time. */
+        app.get('/time', (req, res) => {
+            let data_file = fs.readFileSync(__dirname + '/times.json')
+
+            res.send(JSON.parse(data_file).times[req.query.id])
+        })
+
         /* Catch every other request. */
         app.get('*', (req, res) => {
             res.sendFile(__dirname + '/public/home.html')

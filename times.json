@@ -1,3 +1,41 @@
 {
-  
+  "current": [
+    "2", "1"
+  ],
+  "activities": {
+    "1": {
+      "id": "1",
+      "title": "Webapp",
+      "subtitle": "Creating this very own webapp to register working hours.",
+      "category": "1"
+    },
+    "2": {
+      "id": "2",
+      "title": "Helping students",
+      "subtitle": "Helping students with assigments for courses.",
+      "category": "2"
+    }
+  },
+  "category": {
+    "1": {
+      "title": "Programming"
+    },
+    "2": {
+      "title": "Assisting"
+    }
+  },
+  "times": {
+    "1": {
+      "activity": "1",
+      "start": "22:15",
+      "end": null,
+      "notes": "Space for some notes."
+    },
+    "2": {
+      "activity": "2",
+      "start": "09:15",
+      "end": null,
+      "notes": null
+    }
+  }
 }
