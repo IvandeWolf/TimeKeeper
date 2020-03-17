@@ -1,5 +1,5 @@
 <template>
-  <v-card outlined>
+  <v-card outlined @click="change">
     <v-card-text class="headline font-weight-bold blue--text text--darken-4">
       "{{ quote }}"
     </v-card-text>
@@ -9,7 +9,12 @@
 <script>
 export default {
   mounted() {
-    this.quote += this.quotes[Math.floor(Math.random() * this.quotes.length)]
+    this.change()
+  },
+  methods: {
+    change() {
+      this.quote = this.quotes[Math.floor(Math.random() * this.quotes.length)]
+    }
   },
   data: () => {
     return {
