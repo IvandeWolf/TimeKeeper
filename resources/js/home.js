@@ -13,6 +13,7 @@ import Router from 'vue-router';
 
 import Home from './components/Home.vue'
 import Current from './components/Current.vue'
+import History from './components/History.vue'
 
 Vue.use(Vuetify);
 Vue.use(Router);
@@ -44,6 +45,11 @@ const router = new Router({
             path: '/current',
             name: 'current',
             component: Current
+        },
+        {
+            path: '/history',
+            name: 'history',
+            component: History
         }
     ]
 })

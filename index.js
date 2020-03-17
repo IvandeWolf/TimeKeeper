@@ -62,6 +62,11 @@ const time = new function() {
         })
 
         /* Get the info about a time. */
+        app.get('/times', (req, res) => {
+            let data_file = JSON.parse(fs.readFileSync(__dirname + '/times.json'))
+
+            res.send(data_file.times)
+        })
         app.post('/time', (req, res) => {
             let data_file = JSON.parse(fs.readFileSync(__dirname + '/times.json'))
             let time = data_file.times[req.body.id]
