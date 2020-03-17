@@ -99,7 +99,7 @@ export default {
 
       /* Based on that get the corresponding activity. */
       $.get('/activity', {
-        id: this.id
+        id: this.time.activity
       }).done((data) => {
         this.activity = data
 
@@ -121,8 +121,7 @@ export default {
       end_time: null,
       notes: null,
       modal_start: false,
-      modal_end: false,
-      duration: null
+      modal_end: false
     }
   },
   methods: {

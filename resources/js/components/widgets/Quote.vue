@@ -35,7 +35,8 @@ export default {
         'Don’t just fly, soar. - Dumbo',
         'Venture outside your comfort zone. The rewards are worth it. - Rapunzel',
         'First, think. Second, dream. Third, believe. And finally, dare. - Walt Disney',
-        'If you can dream it, you can do it. - Walt Disney'
+        'If you can dream it, you can do it. - Walt Disney',
+        'Love over fear. - Yes Theory'
       ]
     }
   }

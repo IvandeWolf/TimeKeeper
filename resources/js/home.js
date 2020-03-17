@@ -14,6 +14,7 @@ import Router from 'vue-router';
 import Home from './components/Home.vue'
 import Current from './components/Current.vue'
 import History from './components/History.vue'
+import Adding from './components/Adding.vue'
 
 Vue.use(Vuetify);
 Vue.use(Router);
@@ -50,6 +51,11 @@ const router = new Router({
             path: '/history',
             name: 'history',
             component: History
+        },
+        {
+            path: '/add',
+            name: 'adding',
+            component: Adding
         }
     ]
 })

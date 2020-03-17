@@ -53,12 +53,20 @@ const time = new function() {
 
             res.send(JSON.parse(data_file).activities[req.query.id])
         })
+        app.get('/activities', (req, res) => {
+            let data_file = JSON.parse(fs.readFileSync(__dirname + '/times.json'))
+
+            res.send(data_file.activities)
+        })
 
         /* Get the info about a category. */
         app.get('/category', (req, res) => {
-            let data_file = fs.readFileSync(__dirname + '/times.json')
+            let data_file = JSON.parse(fs.readFileSync(__dirname + '/times.json'))
 
-            res.send(JSON.parse(data_file).category[req.query.id])
+            if (req.query.id)
+                res.send(data_file.category[req.query.id])
+            else
+                res.send(data_file.category)
         })
 
         /* Get the info about a time. */
@@ -66,6 +74,24 @@ const time = new function() {
             let data_file = JSON.parse(fs.readFileSync(__dirname + '/times.json'))
 
             res.send(data_file.times)
+        })
+        app.post('/times', (req, res) => {
+            let data_file = JSON.parse(fs.readFileSync(__dirname + '/times.json'))
+            let id = createId()
+
+            data_file.times[id] = {
+                "id": id,
+                "activity": req.body.activity,
+                "start": req.body.start_time,
+                "end": null,
+                "notes": req.body.notes
+            }
+
+            data_file.current.push(id)
+
+            fs.writeFileSync(__dirname + '/times.json', JSON.stringify(data_file, null, 2))
+
+            res.send()
         })
         app.post('/time', (req, res) => {
             let data_file = JSON.parse(fs.readFileSync(__dirname + '/times.json'))
@@ -99,6 +125,14 @@ const time = new function() {
         app.get('*', (req, res) => {
             res.sendFile(__dirname + '/public/home.html')
         })
+    }
+
+    let createId = () => {
+        let timestamp = (new Date().getTime() / 1000 | 0).toString(16);
+
+        return timestamp + 'xxxxxxxxxxxxxxxx'.replace(/[x]/g, () => {
+            return (Math.random() * 16 | 0).toString(16)
+        }).toLowerCase()
     }
 
     /**

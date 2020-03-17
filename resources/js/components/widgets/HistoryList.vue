@@ -9,12 +9,16 @@
         <v-list-item-content>
           <v-list-item-title>{{ time.activity.title }}</v-list-item-title>
           <v-list-item-subtitle>
-            {{ time.start + ' - ' + time.end }}
+            {{ time.start + ' - ' + (time.end ? time.end : 'NOW') }}
           </v-list-item-subtitle>
           <v-list-item-subtitle>
             {{ time.notes }}
           </v-list-item-subtitle>
         </v-list-item-content>
+      </v-list-item>
+
+      <v-list-item v-if="Object.keys(this.times).length == 0">
+        <v-list-item-title>Nothing here to see, yet ...</v-list-item-title>
       </v-list-item>
     </v-list>
   </v-card>
@@ -27,7 +31,7 @@ export default {
       this.times = data
 
       for (let time in this.times) {
-        $.get('/activity', { id: this.times[time].id }).done((data) => {
+        $.get('/activity', { id: this.times[time].activity }).done((data) => {
           this.times[time].activity = data
         })
       }

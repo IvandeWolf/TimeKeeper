@@ -12,30 +12,27 @@
       "title": "Helping students",
       "subtitle": "Helping students with assigments for courses.",
       "category": "2"
+    },
+    "3": {
+      "id": "3",
+      "title": "Studying",
+      "subtitle": "Studying for BSc Informatica.",
+      "category": "3"
     }
   },
   "category": {
     "1": {
+      "id": "1",
       "title": "Programming"
     },
     "2": {
+      "id": "2",
       "title": "Assisting"
+    },
+    "3": {
+      "id": "3",
+      "title": "Study"
     }
   },
-  "times": {
-    "1": {
-      "id": "1",
-      "activity": "1",
-      "start": "22:15",
-      "end": "17:25",
-      "notes": "Space for some notes."
-    },
-    "2": {
-      "id": "2",
-      "activity": "2",
-      "start": "10:00",
-      "end": "12:00",
-      "notes": ""
-    }
-  }
+  "times": {}
 }
