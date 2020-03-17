@@ -62,10 +62,32 @@ const time = new function() {
         })
 
         /* Get the info about a time. */
+        app.post('/time', (req, res) => {
+            let data_file = JSON.parse(fs.readFileSync(__dirname + '/times.json'))
+            let time = data_file.times[req.body.id]
+
+            time.start = req.body.start
+            time.end = req.body.end
+            time.notes = req.body.notes
+
+            fs.writeFileSync(__dirname + '/times.json', JSON.stringify(data_file, null, 2))
+
+            res.send()
+        })
         app.get('/time', (req, res) => {
             let data_file = fs.readFileSync(__dirname + '/times.json')
 
             res.send(JSON.parse(data_file).times[req.query.id])
+        })
+        app.post('/time/done', (req, res) => {
+            let data_file = JSON.parse(fs.readFileSync(__dirname + '/times.json'))
+            let index = data_file.current.indexOf(req.body.id)
+
+            data_file.current.splice(index, 1)
+
+            fs.writeFileSync(__dirname + '/times.json', JSON.stringify(data_file, null, 2))
+
+            res.send()
         })
 
         /* Catch every other request. */

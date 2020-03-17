@@ -3,7 +3,6 @@
     <v-card-text v-if="this.activity">
       <div v-if="this.category">
         <v-chip outlined label small color="blue darken-4">{{ this.category.title }}</v-chip>
-        <v-chip outlined label small color="blue darken-4">{{ Date.now() }}</v-chip>
       </div>
       <h2 class="display-1 text--primary">{{ this.activity.title}}</h2>
       <p>{{ this.activity.subtitle}}</p>
@@ -41,9 +40,10 @@
                   outlined
                   v-model="end_time"
                   label="End time"
-                  prepend-inner-icon="access_time"
+                  prepend-inner-icon="timelapse"
                   :hide-details="true"
                   readonly
+                  clearable
                   v-on="on"
                 ></v-text-field>
               </template>
@@ -68,12 +68,19 @@
               clearable
               :hide-details="true"
               prepend-inner-icon="mdi-file-document-box-outline"
-              :value="this.time.notes"
+              :value="this.notes"
+              @change="update"
             ></v-textarea>
           </v-col>
         </v-row>
       </v-container>
     </v-form>
+
+    <!-- Some actions that can be proformed -->
+    <v-card-actions v-if="this.end_time">
+      <v-spacer></v-spacer>
+      <v-btn text @click="done">Done</v-btn>
+    </v-card-actions>
   </v-card>
 </template>
 
@@ -88,6 +95,7 @@ export default {
       this.time = data
       this.start_time = this.time.start
       this.end_time = this.time.end
+      this.notes = this.time.notes
 
       /* Based on that get the corresponding activity. */
       $.get('/activity', {
@@ -111,12 +119,53 @@ export default {
       category: null,
       start_time: null,
       end_time: null,
+      notes: null,
       modal_start: false,
-      modal_end: false
+      modal_end: false,
+      duration: null
     }
   },
   methods: {
     allowedStep: m => m % 5 === 0,
+    update(value) {
+      $.post('/time', {
+        id: this.time.id,
+        start: this.start_time,
+        end: this.end_time,
+        notes: value
+      })
+    },
+    done() {
+      $.post('/time/done', {
+        id: this.time.id
+      }).done(() => {
+        this.$destroy();
+        // remove the element from the DOM
+        this.$el.parentNode.removeChild(this.$el);
+      })
+    }
+  },
+  watch: {
+    start_time: {
+      handler(value) {
+        $.post('/time', {
+          id: this.time.id,
+          start: this.start_time,
+          end: this.end_time,
+          notes: this.notes
+        })
+      }
+    },
+    end_time: {
+      handler(value) {
+        $.post('/time', {
+          id: this.time.id,
+          start: this.start_time,
+          end: this.end_time,
+          notes: this.notes
+        })
+      }
+    }
   }
 }
 </script>

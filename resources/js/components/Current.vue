@@ -6,6 +6,7 @@
 
     <!-- Show a card with the current checked in activity. -->
     <CurrentActivity v-for="c in this.current" :id="c" v-bind:key="c"></CurrentActivity>
+    <NoActivity v-if="this.current.length == 0"></NoActivity>
   </main>
 </div>
 </template>

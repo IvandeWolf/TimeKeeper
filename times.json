@@ -1,7 +1,5 @@
 {
-  "current": [
-    "2", "1"
-  ],
+  "current": [],
   "activities": {
     "1": {
       "id": "1",
@@ -26,16 +24,18 @@
   },
   "times": {
     "1": {
+      "id": "1",
       "activity": "1",
       "start": "22:15",
-      "end": null,
+      "end": "17:25",
       "notes": "Space for some notes."
     },
     "2": {
+      "id": "2",
       "activity": "2",
-      "start": "09:15",
-      "end": null,
-      "notes": null
+      "start": "10:00",
+      "end": "12:00",
+      "notes": ""
     }
   }
 }
